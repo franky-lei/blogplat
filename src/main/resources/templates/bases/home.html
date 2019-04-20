@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}">
+</head>
+<body>
+<!--Page Container-->
+<div class="container blog-content-container">
+    <div class="row">
+        <!--左侧区域博客展示列-->
+        <div class="col-md-8">
+            <div id="blogListContainer">
+                <div id="blogListContainerReplace"></div>
+            </div>
+        </div>
+        <!--右侧统计栏-->
+        <div class="col-md-4">
+            <!--猜你喜欢-->
+            <div class="card"></div>
+            <!--热门标签-->
+            <div class="card my-5"></div>
+            <!--热门文章-->
+            <div class="card my-5"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="~{fragments/footer :: footer}">...</div>
+</body>
+</html>

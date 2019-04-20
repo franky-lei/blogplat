@@ -17,6 +17,7 @@ HELP.md
 *.iws
 *.iml
 *.ipr
+application.properties
 /out/
 
 ### NetBeans ###
