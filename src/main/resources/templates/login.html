@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tino</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- CSRF -->
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="../../css/signin.css" th:href="@{/css/signin.css}" rel="stylesheet">
+</head>
+<body class="text-center">
+<!--登录表单-->
+<form class="form-signin" th:action="@{~/login}" method="post">
+    <img class="mb-4" src="/images/Tino.png" alt="" width="72" height="72"><i style="font-family:Comic Sans MS; font-size:60px; color:#00A5CB">Tino</i>
+    <h1 class="h3 mb-3 font-weight-normal">--登录--</h1>
+    <p th:if="${loginError}" th:text="${errMsg}"></p>
+    <div>
+        <label for="inputUsername" class="sr-only">Username</label>
+        <input type="text" id="inputUsername" class="form-control" name="username" placeholder="账号" maxlength="50" required autofocus>
+    </div>
+    <div>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="密码" maxlength="30" required>
+    </div>
+    <div class="checkbox mb-3">
+        <label style="float: left">
+            <input type="checkbox" value="remember-me"> 记住我
+        </label>
+        <a th:href="@{'/register'}" style="float: right; color: #00A5CB">新用户？点击注册</a>
+    </div>
+    <button id="loginButton" class="btn btn-lg btn-primary btn-block" type="submit" style="background-color: #00A5CB; border: #00A5CB">登录</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
+</form>
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!--
+<script src="../../js/toastr.min.js" th:src="@{/js/toastr.min.js}"></script>
+<script src="../../js/login.js" th:src="@{/js/login.js}"></script>
+-->
+
+</body>
+</html>

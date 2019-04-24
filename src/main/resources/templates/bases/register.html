@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tino</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="../../css/signin.css" th:href="@{/css/signin.css}" rel="stylesheet">
+</head>
+<body class="text-center">
+<!--注册表单-->
+<form class="form-signin">
+    <img class="mb-4" src="/images/Tino.png" alt="" width="72" height="72"><i style="font-family:Comic Sans MS; font-size:60px; color:#00A5CB">Tino</i>
+    <h1 class="h3 mb-3 font-weight-normal">--欢迎注册--</h1>
+    <div>
+        <label for="username" class="sr-only">账号</label>
+        <input type="text" class="form-control" id="username" name="username" maxlength="50"
+               placeholder="请输入账号，至少3个字符，至多20个" required>
+    </div>
+    <div>
+        <label for="email" class="sr-only">邮箱</label>
+        <input type="email" class="form-control" id="email" name="email" maxlength="50" placeholder="请输入邮箱" required>
+    </div>
+    <div>
+        <label for="name" class="sr-only">姓名</label>
+        <input type="text" class="form-control" id="name" name="name" maxlength="20"
+               placeholder="请输入姓名，至少2个字符，至多20个">
+    </div>
+    <div>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" name="password" maxlength="30" placeholder="密码" required>
+    </div>
+    <div class="checkbox mb-3">
+        <a th:href="@{'/login'}" style="float: right; color: #00A5CB">老司机？前往登录</a>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" style="background-color: #00A5CB; border: #00A5CB">注册</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
+</form>
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
