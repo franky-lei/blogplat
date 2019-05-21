@@ -1,0 +1,330 @@
+@charset "UTF-8";
+
+
+.note {
+    position: relative;
+    padding-top: 105px;
+    left:25%;
+}
+
+.note .post {
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    width: 700px;
+}
+
+.note .post .article .title {
+    word-break: break-word!important;
+    word-break: break-all;
+    margin: 20px 0 0;
+    font-family: -apple-system,SF UI Display,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.note .post .article .author {
+    margin: 30px 0 40px;
+}
+
+.note .post .article .author .avatar {
+    width: 48px;
+    height: 48px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.note .post .article .author .info {
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.note .post .article .author .name {
+    margin-right: 3px;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.note .post .article .author .edit {
+    float: right;
+    margin-top: 8px;
+    padding: 0 12px;
+    font-size: 14px;
+    border: 1px solid #dcdcdc;
+    color: #9b9b9b;
+    line-height: 30px;
+    border-radius: 50px;
+}
+
+note .post .article .follow{
+    padding: 0 7px 0 5px;
+    font-size: 12px;
+}
+
+.note .post .article .author .meta {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #969696;
+}
+
+.note .post .article .author .meta span {
+    padding-right: 5px;
+}
+
+.note .post .article .show-content {
+    color: #2f2f2f;
+    word-break: break-word!important;
+    word-break: break-all;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+.note .post .comment-list {
+    padding-top: 20px;
+}
+
+.note .post .comment-list .new-comment {
+    position: relative;
+    margin-left: 48px;
+}
+
+.note .post .comment-list .new-comment .avatar {
+    position: absolute;
+    left: -48px;
+    width: 44px;
+    height: 44px;
+}
+
+.note .post .comment-list .avatar {
+    margin-right: 5px;
+    width: 38px;
+    height: 38px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.note .post .comment-list .new-comment .write-function-block {
+    height: 50px;
+    display: none;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.note .post .comment-list .new-comment .btn-send {
+    float: right;
+    width: 78px;
+    margin: 10px 0;
+    padding: 8px 18px;
+    font-size: 16px;
+    border: none;
+    border-radius: 20px;
+    color: #fff!important;
+    background-color: #42c02e;
+    cursor: pointer;
+    outline: none;
+    display: block;
+}
+
+.note .post .comment-list .new-comment .cancel {
+    float: right;
+    margin: 18px 30px 0 0;
+    font-size: 16px;
+    color: #969696;
+}
+
+.note .post .comment-list .new-comment textarea {
+    padding: 10px 15px;
+    width: 100%;
+    height: 80px;
+    font-size: 13px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    background-color: hsla(0,0%,71%,.1);
+    resize: none;
+    display: inline-block;
+    vertical-align: top;
+    outline-style: none;
+}
+
+.note .post .comment-list .normal-comment-list {
+    margin-top: 30px;
+}
+
+.note .post .comment-list .top-title {
+    padding-bottom: 20px;
+    font-size: 17px;
+    font-weight: 700;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.note .post .comment-list .top-title span {
+    vertical-align: middle;
+}
+
+a, body {
+    color: #333;
+}
+
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+img, .post{
+    width: 44px;
+    border-radius:50%;
+}
+
+.note .post .comment-list .normal-comment-list {
+    margin-top: 30px;
+}
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+.note .post .comment-list .top-title {
+    padding-bottom: 20px;
+    font-size: 17px;
+    font-weight: 700;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.note .post .comment-list .comment {
+    padding: 20px 0 30px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.note .post .comment-list .author {
+    margin-bottom: 15px;
+}
+
+.v-tooltip-container {
+    position: relative;
+}
+
+.v-tooltip-container, .v-tooltip-content {
+    display: inline-block;
+}
+
+.note .post .comment-list .avatar {
+    margin-right: 5px;
+    width: 38px;
+    height: 38px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.note .post .comment-list .info {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.note .post .comment-list .name {
+    font-size: 15px;
+    color: #333;
+}
+
+.note .post .comment-list .meta {
+    font-size: 12px;
+    color: #969696;
+}
+
+.note .post .comment-list .comment p {
+    font-size: 16px;
+}
+
+.note .post .comment-list p {
+    margin: 10px 0;
+    line-height: 1.5;
+    font-size: 16px;
+    word-break: break-word!important;
+    word-break: break-all;
+}
+
+.note .post .comment-list .tool-group a {
+    margin-right: 10px;
+    font-size: 0;
+    color: #969696;
+    display: inline-block;
+}
+
+.note .post .comment-list .tool-group a span {
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+.like-button {
+    position: relative;
+    padding-left: 23px;
+}
+
+.note .post .meta-bottom {
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+
+.like{
+    display: inline-block;
+}
+
+.like .like-group{
+    position: relative;
+    padding: 13px 0 15px 0;
+    font-size: 0;
+    border: 1px solid #EA6F5A;
+    border-radius: 40px;
+}
+
+.like .like-group .btn-like{
+    display: inline-block;
+    font-size: 19px;
+}
+
+.like .like-group .btn-like a {
+    position: relative;
+    padding: 18px 30px 18px 1px;
+    color: #EA6F5A;
+}
+
+.main-top{
+    clear:both;
+}
+
+.badge {
+    border: 1px solid #000;
+}
+
+.badge-default {
+    background-color: #636c72;
+}
+
+.card-block {
+    padding-bottom: 20px;
+}
+
+
+

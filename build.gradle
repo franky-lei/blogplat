@@ -22,6 +22,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.apache.commons:commons-lang3'
     implementation 'com.querydsl:querydsl-core:4.2.1'
+    implementation 'es.nitaur.markdown:txtmark:0.16'
     runtimeOnly 'mysql:mysql-connector-java'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'

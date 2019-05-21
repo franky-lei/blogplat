@@ -11,7 +11,7 @@
 </head>
 <body class="text-center">
 <!--注册表单-->
-<form class="form-signin">
+<form class="form-signin" th:action="@{/register}" method="post">
     <img class="mb-4" src="/images/Tino.png" alt="" width="72" height="72"><i style="font-family:Comic Sans MS; font-size:60px; color:#00A5CB">Tino</i>
     <h1 class="h3 mb-3 font-weight-normal">--欢迎注册--</h1>
     <div>
@@ -29,8 +29,8 @@
                placeholder="请输入姓名，至少2个字符，至多20个">
     </div>
     <div>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" name="password" maxlength="30" placeholder="密码" required>
+        <label for="password" class="sr-only">密码</label>
+        <input type="password" id="password" class="form-control" name="password" maxlength="30" placeholder="密码" required>
     </div>
     <div class="checkbox mb-3">
         <a th:href="@{'/login'}" style="float: right; color: #00A5CB">老司机？前往登录</a>

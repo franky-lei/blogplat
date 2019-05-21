@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Tino</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- editor-md CSS -->
+    <link href="../../css/editormd.css" th:href="@{/css/editormd.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link href="../../css/jquery.tagsinput.css" th:href="@{/css/jquery.tagsinput.css}" rel="stylesheet">
+</head>
+<body>
+
+<div>
+
+    <div class="row">
+        <div class="col-md-10" style="background-color: #c4c5c5">
+            <!-- Blog Post -->
+            <div class="card mb-4" style="background-color: #ebecec">
+                <div class="card-block" th:object="${blogModel.blog}">
+                    <input type="hidden" name="id" th:value="*{id}" id="blogId">
+                    <input type="text" placeholder="请填写博客标题" id="title" name="title"
+                           th:value="*{title}" maxlength="50" style="    display: block;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #464a4c;
+    background-color: #ebecec;
+    background-image: none;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;">
+
+                    <textarea style="border-radius: 0;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 80px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+        background-color: #c4c5c5;
+    resize: none;" placeholder="请填写博客摘要" id="summary" name="summary"
+                              th:text="*{summary}" maxlength="300"></textarea>
+                </div>
+                <div class="col-md-12">
+                    <div id="my-editormd">
+                        <textarea id="my-editormd-markdown-doc" name="my-editormd-markdown-doc"
+                                  style="display:none;" th:text="${blogModel.blog.content}"></textarea>
+                        <!-- 注意：name属性的值-->
+                        <!--<textarea id="my-editormd-html-code" name="my-editormd-html-code"-->
+                        <!--style="display:none;"></textarea>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2" style="background-color: #c4c5c5">
+            <div style="position: fixed; top:20%">
+                <button class="btn btn-block"><a href="/">返回首页</a></button>
+                <hr>
+                <div class="row mt-1">
+                    <div class="col-lg-12">
+                        标签：<input id="form-control-tags" type="text"
+                                  th:value="${blogModel.blog.tags}">
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-lg-12">
+                        分类：<select id="catalogSelect" class="form-control form-control-chosen"
+                                   data-placeholder="请选择">
+                        <option th:value="*{id}" th:text="*{name}"
+                                th:each="classification : ${blogModel.classificationList}"
+                                th:object="${classification}"
+                                th:selected="${classification  eq blogModel.blog.classification}">Java
+                        </option>
+                    </select>
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-lg-12">
+                        <button class="btn btn-primary float-right" id="submitBlog"
+                                th:attr="userName=${#authentication.name}">发布
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}">...</div>
+<script src="../../lib/marked.min.js"></script>
+<script src="../../lib/prettify.min.js"></script>
+<script src="../../lib/raphael.min.js"></script>
+<script src="../../lib/underscore.min.js"></script>
+<script src="../../lib/sequence-diagram.min.js"></script>
+<script src="../../lib/flowchart.min.js"></script>
+<script src="../../lib/jquery.flowchart.min.js"></script>
+<script src="../../js/jquery.tagsinput.js"></script>
+<script src="../../js/editormd.min.js"></script>
+<script src="../../js/personal/writer.js"></script>
+
+</body>
+</html>

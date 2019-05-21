@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="~{fragments/header :: header}">
+</head>
+
+<body lang="zh-CN" style="height: 100%;margin: 0;align-items: self-start;">
+<!-- 全局顶部导航栏 -->
+<div class="note blog-content-container">
+
+    <div class="post">
+        <div class="article">
+            <!--文章标题-->
+            <h1 class="title" th:text="${blog.title}"></h1>
+
+            <!-- 作者区域 -->
+            <div class="author">
+                <a class="avatar" th:href="'/p/' + ${blog.user.id}">
+                    <img th:src="${blog.user.avatarurl}"
+                         alt="96" width="44px">
+                </a>
+                <div class="info">
+                    <span class="name"><a th:href="'/p/' + ${blog.user.id}"
+                                          th:text="${blog.user.username}">admin</a></span>
+                    <!-- 文章数据信息 -->
+                    <div class="meta">
+                        <!-- 如果文章更新时间大于发布时间，那么使用 tooltip 显示更新时间 -->
+                        <span class="publish-time" data-toggle="tooltip" data-placement="bottom"> 发表于 [[${#dates.format(blog.timestamp,
+                        'yyyy-MM-dd HH:mm')}]]</span>
+                        <!--<span class="wordage" th:text="">字数</span>-->
+                        <span class="views-count" th:text="'阅读 '+${blog.readTimes}">阅读</span>
+                        <span class="comments-count" th:text="'评论 '+${blog.commentTimes}">评论</span>
+                        <span class="likes-count" th:text="'喜欢 '+${blog.upVoteTimes}">喜欢</span></div>
+                </div>
+                <!-- 如果是当前作者，加入编辑按钮 -->
+                <a th:if="${ownBlog} or ${ownAdmin}"
+                   class="edit delete-blog-action">删除</a>
+                <a th:href="'/writer/' + ${blog.user.username} +'/'+${blog.id}" th:if="${ownBlog}" target="_blank"
+                   class="edit">编辑</a>
+            </div>
+
+
+            <!-- 文章内容 -->
+            <div data-note-content="" class="show-content">
+                <div id="content-editormd">
+                    <textarea style="display:none;" th:text="${blog.content}"></textarea>
+
+                </div>
+                <div id="htmlcontent-editormd" th:utext="${blog.parsedContent}" style="display: none">
+
+                </div>
+            </div>
+        </div>
+
+        <!--分类和标签-->
+        <div class="card-block">
+
+
+            <h5>分类：<a th:href="'/p/'+${blog.user.id} + '?classification='+${blog.classification.id} "
+                      th:text="${blog.classification.name}">
+                Spring Data
+            </a></h5>
+
+            <h5>标签：
+                <a th:each="tag : ${#strings.arraySplit(blog.tags, ',')}"
+                   th:href="'/p/'+${blog.user.id}+'?keyword='+${tag}"> <span
+                        class="badge badge-default" th:text="${tag}">Web Design</span></a>
+            </h5>
+        </div>
+
+        <!--点赞-->
+        <div class="meta-bottom" id="upvote-pos">
+            <div class="like">
+                <div class="btn like-group">
+                    <div class="btn-like" th:if="${currentVote} == null" id="submitVote">
+                        <i class="fa fa-heart-o" style="font-size:22px;color:#ea6f5a;padding-left: 15px;"></i>
+                        <a >点赞</a>
+                    </div>
+                    <div class="btn-like" th:if="${currentVote}" th:attr="voteId=${currentVote.id}" id="cancelVote">
+                        <i class="fa fa-heart" style="font-size:22px;color:#ea6f5a;padding-left: 15px;"></i>
+                        <a >取消点赞</a>
+                    </div>
+                </div> <!---->
+            </div>
+        </div>
+
+
+
+        <!--评论区-->
+        <div id="commentContainer" class="comment-list">
+            <!--通过异步请求来替换掉评论区commentAreaReplace，其中评论区包含用户填写评论和展示评论-->
+            <div id="commentAreaReplace">
+                <div class="new-comment">
+                    <a class="avatar">
+                        <img th:src="${currentUser.avatarurl}" width="44px">
+                    </a>
+                    <textarea id="comment-text-area" placeholder="写下你的评论..."></textarea>
+                    <div class="write-function-block">
+                        <a id="submitComment" class="btn btn-send">发送</a>
+                        <a class="cancel" style="display:none">取消</a>
+                    </div>
+                </div>
+                <div id="normal-comment-list" class="normal-comment-list">
+                    <div>
+                        <div class="top-title">
+                            <span>24条评论</span>
+                        </div>
+                    </div>
+                    <div class="comment" th:each="comment:${commentList}" th:object="${comment}">
+                        <div>
+                            <div class="author">
+                                <div  class="v-tooltip-container" style="z-index: 0;">
+                                    <div class="v-tooltip-content">
+                                        <a th:href="@{/p/{id}(id=*{user.id})}" target="_blank" class="avatar">
+                                            <img th:src="*{user.avatarurl}" width="44px">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <a th:href="@{/p/{id}(id=*{user.id})}" target="_blank" class="name" th:text="*{user.username}"></a>
+                                    <div class="meta">
+                                        <span >发表于 [[${#dates.format(comment.timestamp,'yyyy-MM-dd HH:mm')}]]</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment-wrap">
+                                <p th:text="*{content}"></p>
+                                <div class="tool-group">
+                                    <a th:if="${commentOwnId} eq *{user.id}" class="like-button blog-delete-comment" th:attr="commentId=*{id}">
+                                        <span>取消评论</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div th:replace="~{fragments/footer :: footer}">...</div>
+
+<!-- JavaScript -->
+<script th:inline="javascript">
+    var blogId = [[${blog.id}]];
+    var blogUrl = '/blog/' + [[${blog.id}]];
+    var blogUsername = [[${blog.user.username}]];
+</script>
+<script src="../../lib/marked.min.js"></script>
+<script src="../../lib/prettify.min.js"></script>
+<script src="../../lib/raphael.min.js"></script>
+<script src="../../lib/underscore.min.js"></script>
+<script src="../../lib/sequence-diagram.min.js"></script>
+<script src="../../lib/flowchart.min.js"></script>
+<script src="../../lib/jquery.flowchart.min.js"></script>
+<script src="../../js/jquery.tagsinput.js"></script>
+<script src="../../js/editormd.min.js"></script>
+<script src="../../js/personal/blog.js" th:src="@{/js/personal/blog.js}"></script>
+
+</body>
+
+</html>

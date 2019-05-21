@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" data-th-fragment="header">
+<html lang="en" data-th-fragment="header"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
-    <title>咯吱圈</title>
+    <title>Tino</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/4.3/examples/dashboard/dashboard.css">
     <link href="../../css/signin.css" th:href="@{/css/signin.css}" rel="stylesheet">
+    <!-- editor-md CSS -->
+    <link href="../../css/editormd.css" th:href="@{/css/editormd.css}" rel="stylesheet">
+    <link href="../../css/blogpage.css" th:href="@{/css/blogpage.css}" rel="stylesheet">
+    <link href="../../css/person.css" th:href="@{/css/person.css}" rel="stylesheet">
+    <link href="../../css/home.css" th:href="@{/css/home.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
 </head>
 <body>
-<nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark the-top-nav-container">
     <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,33 +27,34 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav bar-bar-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">首页 <span class="sr-only">(current)</span></a>
+                    <a class="nav-link-link" href="/">
+                        <i class="fa fa-home" style="font-size:24px"></i>首页
+                        <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
+                <li th:if="${haveLogin}" class="nav-item active">
+                    <a class="nav-link-right" th:href="'/p/'+${currentUser.id}">
+                        <i class="fa fa-user-circle" style="font-size:24px"></i>我的
+                        <span class="sr-only">(current)</span>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <li th:if="${haveLogin}" class="nav-item active">
+                    <a class="nav-link-right" th:href="'/writer/'+${currentUser.username}">
+                        <i class="fa fa-pencil-square-o" style="font-size:24px"></i>写文章
+                        <span class="sr-only">(current)</span></a>
                 </li>
+
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <div class="search">
+                <form>
+                    <input  placeholder="搜索"
+                            class="search-input" id="the-top-search-input">
+                    <a class="search-btn" id="top-search-button">
+                        <i class="fa fa-search" style="font-size:19px"></i>
+                    </a>
+                </form>
+            </div>
         </div>
     </div>
 </nav>

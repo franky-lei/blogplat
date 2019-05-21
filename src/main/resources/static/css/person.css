@@ -1,0 +1,371 @@
+@charset "UTF-8";
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #f5f5f5;
+}
+
+a, body {
+    color: #333;
+}
+
+.content-container {
+    width: 960px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.person .row {
+    padding-top: 30px;
+}
+
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-top: -200px;
+}
+
+.person .main {
+    padding-right: 0;
+}
+
+.col-xs-16 {
+    width: 66.66667%;
+}
+
+.trigger-menu {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ffffff;
+    font-size: 0;
+    list-style: none;
+}
+
+.trigger-menu:hover {
+    border-bottom-width: 0px;
+}
+
+.trigger-menu .search {
+    padding-left: 15px;
+    padding-top: 2px;
+    padding-bottom: 4px;
+}
+
+form .search-input {
+    padding: 0 40px 0 20px;
+    width: 210px;
+    height: 38px;
+    font-size: 14px;
+    border: 1px solid #eee;
+    border-radius: 40px;
+    background: #eee;
+    transition: width .5s;
+    outline:none;
+    -moz-transition: width .5s;
+    -webkit-transition: width .5s;
+    -o-transition: width .5s;
+    transition-delay: .1s;
+    -moz-transition-delay: .1s;
+    -webkit-transition-delay: .1s;
+    -o-transition-delay: .1s;
+}
+
+form .search-input:focus{
+    background: #fff;
+
+}
+
+form .search-btn {
+    position: absolute;
+    top: 16px;
+    right: 5px;
+    width: 30px;
+    height: 30px!important;
+    line-height: normal!important;
+    padding: 0!important;
+    color: #969696!important;
+    text-align: center;
+}
+
+ul {
+    padding-left: 0;
+}
+
+li {
+    line-height: 20px;
+}
+
+.trigger-menu li {
+    position: relative;
+    display: inline-block;
+    padding: 8px 0;
+    margin-bottom: -1px;
+}
+
+.trigger-menu li.active {
+    border-bottom: 2px solid #646464;
+}
+
+.trigger-menu li:hover {
+
+    border-bottom: 2px solid #646464;
+}
+
+.trigger-menu a {
+    padding: 13px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #969696;
+    line-height: 25px;
+}
+
+.trigger-menu li.active a, .trigger-menu a:hover {
+    color: #646464;
+}
+
+a {
+    cursor: pointer;
+    text-decoration : none
+}
+
+a:link{
+    text-decoration : none
+}
+
+.main-top .avatar{
+    float:left;
+}
+
+.main-top .avatar img{
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+.trigger-menu i {
+    margin-right: 5px;
+    font-size: 17px;
+}
+
+.note-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.note-list li {
+    position: relative;
+    width: 100%;
+    margin: 0 0 15px;
+    padding: 15px 2px 20px 0;
+    border-bottom: 1px solid #cccccc;
+    word-wrap: break-word;
+}
+
+.note-list .the-title:visited {
+    color: #969696;
+}
+
+.note-list .the-title:hover {
+    color: #1f1d1d;
+    text-decoration: #969696;
+    text-decoration-line: underline;
+}
+
+.note-list .the-title {
+    margin: -7px 0 4px;
+    display: inherit;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+.note-list .abstract {
+    margin: 0 0 8px;
+    font-size: 13px;
+    line-height: 24px;
+    color: #999;
+}
+
+.note-list .meta a {
+    margin-right: 10px;
+    color: #b4b4b4;
+}
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+.note-list .meta span {
+    margin-right: 10px;
+    color: #b4b4b4;
+}
+
+.person .aside {
+    padding: 0;
+}
+
+.col-xs-offset-1 {
+    margin-left: 4.16667%;
+}
+
+.col-xs-7 {
+    width: 29.16667%;
+}
+
+.person .aside .title {
+    float: left;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #969696;
+}
+
+.person .aside .function-btn {
+    float: right;
+    font-size: 13px;
+    color: #969696;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.person .aside .catalog-edit {
+    display: none;
+    margin-bottom: 20px;
+}
+
+.person .aside .user-dynamic {
+    padding-top: 20px;
+}
+
+form {
+    margin: 0 0 0 0px;
+}
+
+.person .aside .catalog-edit textarea {
+    margin-bottom: 5px;
+    width: 100%;
+    height: 125px;
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: hsla(0,0%,71%,.1);
+    border: 1px solid #c8c8c8;
+    border-radius: 4px;
+    resize: none;
+    outline: none;
+}
+
+.person .aside .catalog-edit .btn-hollow {
+    padding: 5px 20px;
+    font-size: 14px;
+}
+
+.btn-hollow {
+    border: 1px solid rgba(59,194,29,.7);
+    color: #42c02e!important;
+}
+
+.btn-hollow {
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 40px;
+    background: none;
+}
+
+.person .aside .catalog-edit a {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #969696;
+    line-height: 34px;
+    vertical-align: middle;
+}
+
+.person .aside .title {
+    float: left;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #969696;
+}
+
+.person .aside .list {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    list-style: none;
+    border-bottom: 1px solid #cccccc;
+    clear: both;
+}
+
+.person .aside .list li {
+    margin-bottom: 10px;
+}
+
+.person .aside .list li a {
+    display: inline-block;
+}
+
+.person .aside .name {
+    position: relative;
+    max-width: 236px;
+    vertical-align: middle;
+    top: 1px;
+    font-size: 14px;
+    color: #333;
+}
+
+/*分页专用*/
+.jq-pagination li {
+    width: 45px;
+    height: 40px;
+    border: 1px solid #ebebeb;
+    margin-left: -1px;
+    color: #8a8a8a;
+    display: inline-block;
+    line-height: 40px;
+    float: left;
+    font-size: 15px;
+    text-decoration: none;
+    margin: 0 2px;
+    border-radius: 6px;
+}
+
+.jq-pagination .active a {
+    color: #fff;
+}
+
+.jq-pagination .active {
+    background-color: #222a35;
+    color: #fff;
+    border-color: #ebebeb;
+    position: relative;
+    z-index: 1;
+}
+
+.jq-pagination .disabled {
+    border-color: #eee;
+}
+
+.jq-pagination .first {
+    background-color: #fff;
+}
+
+.jq-pagination .prev {
+    background-color: #fff;
+}
+
+.jq-pagination .page {
+
+}
+
+.jq-pagination .next {
+    background-color: #fff;
+}
+
+.jq-pagination .last {
+    background-color: #fff;
+}

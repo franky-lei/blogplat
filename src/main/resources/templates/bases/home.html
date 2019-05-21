@@ -4,27 +4,66 @@
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/header :: header}">
 </head>
-<body>
+<body lang="zh-CN" style="height: 100%;margin: 0;align-items: self-start;">
 <!--Page Container-->
-<div class="container blog-content-container">
-    <div class="row">
-        <!--左侧区域博客展示列-->
-        <div class="col-md-8">
-            <div id="blogListContainer">
-                <div id="blogListContainerReplace"></div>
-            </div>
+<div class="note home-content-container" style="width: 1000px;">
+    <div class="col-xs-16 main">
+        <ul class="trigger-menu">
+            <li class="the-latest">
+                <a href="javascript:void(0)">
+                    <i class="iconfont ic-latestcomments"></i>
+                    最新
+                </a>
+            </li>
+            <li class="the-hot">
+                <a href="javascript:void(0)">
+                    <i class="iconfont ic-hot"></i>
+                    热门
+                </a>
+            </li>
+        </ul>
+
+        <div id="list-container">
+            <ul id="blogListReplace" class="note-list">
+
+                <li th:each="blog : ${blogList}" th:object="${blog}">
+                    <div class="content">
+                        <a class="the-title" th:href="'/blog/' + *{id}"
+                           th:title="*{user.username}" th:text="*{title}"></a>
+                        <p class="abstract" th:text="*{summary} + '...'">
+
+                        </p>
+                        <div class="meta">
+                            <a>
+                                <i class="fa fa-eye"></i> <span th:text="*{readTimes}"></span>
+                            </a>
+                            <a>
+                                <i class="fa fa-commenting-o"></i> <span th:text="*{commentTimes}"></span>
+                            </a>
+                            <a><i class="fa fa-heart-o"></i><span th:text="*{upVoteTimes}"></span></a>
+                            <span class="time">发表于 [[${#dates.format(blog.timestamp,'yyyy-MM-dd HH:mm')}]]</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <!--右侧统计栏-->
-        <div class="col-md-4">
-            <!--猜你喜欢-->
-            <div class="card"></div>
-            <!--热门标签-->
-            <div class="card my-5"></div>
-            <!--热门文章-->
-            <div class="card my-5"></div>
+
+        <div id="paginator-text"></div>
+        <!--进行目录查询的时候需要让他消失-->
+        <div class="text-center pagination-display-control">
+            <ul class="pagination jq-pagination" id="the-pagination"> </ul>
         </div>
     </div>
 </div>
 <div th:replace="~{fragments/footer :: footer}">...</div>
+<script th:inline="javascript">
+    var querymethod;
+    var pageIndex;
+    var pageSize = 5;
+</script>
+<script src="../../js/jqPaginator.js" th:src="@{/js/jqPaginator.js}"></script>
+<script src="../../js/bases/home.js" th:src="@{/js/bases/home.js}"></script>
 </body>
 </html>
+
+

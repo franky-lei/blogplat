@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+.navbar-collapse form .search-btn {
+    position: absolute;
+    top: 18px;
+    right: 390px;
+    width: 30px;
+    height: 30px!important;
+    line-height: normal!important;
+    padding: 0!important;
+    color: #969696!important;
+    text-align: center;
+}
+
+.navbar-collapse .nav-link-link{
+    padding-left: 195px;
+    color: white;
+    font-weight: 900;
+    font-size: larger;
+}
+
+.navbar-collapse .nav-link-right{
+    padding-left: 25px;
+    color: #969696;
+    font-weight: 900;
+    font-size: larger;
+}
+
+.navbar-collapse .nav-link-right:hover {
+    color: white;
+}
+
+.navbar-collapse .bar-bar-auto {
+    margin-right: 450px;
+}

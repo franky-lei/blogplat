@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="~{fragments/header :: header}">
+</head>
+<body>
+<!-- Page Content -->
+<div class="content-container person person-content-container">
+    <div class="row">
+        <div class="col-xs-16 main">
+            <ul class="trigger-menu">
+                <li class="the-latest">
+                    <a href="javascript:void(0)">
+                        <i class="iconfont ic-latestcomments"></i>
+                        最新
+                    </a>
+                </li>
+                <li class="the-hot">
+                    <a href="javascript:void(0)">
+                        <i class="iconfont ic-hot"></i>
+                        热门
+                    </a>
+                </li>
+                <li class="search">
+                    <form>
+                        <input  placeholder="搜索"
+                               class="search-input">
+                        <a class="search-btn" href="javascript:void(null)">
+                            <i class="fa fa-search" style="font-size:19px"></i>
+                        </a>
+                    </form>
+                </li>
+            </ul>
+
+            <div id="list-container">
+                <ul id="blogListReplace" class="note-list">
+
+                    <li th:each="blog : ${blogList}" th:object="${blog}">
+                        <div class="content">
+                            <a class="the-title" th:href="'/blog/' + *{id}"
+                               th:title="*{user.username}" th:text="*{title}"></a>
+                            <p class="abstract" th:text="*{summary} + '...'">
+
+                            </p>
+                            <div class="meta">
+                                <a>
+                                    <i class="fa fa-eye"></i> <span th:text="*{readTimes}"></span>
+                                </a>
+                                <a>
+                                    <i class="fa fa-commenting-o"></i> <span th:text="*{commentTimes}"></span>
+                                </a>
+                                <a><i class="fa fa-heart-o"></i><span th:text="*{upVoteTimes}"></span></a>
+                                <span class="time">发表于 [[${#dates.format(blog.timestamp,'yyyy-MM-dd HH:mm')}]]</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="paginator-text"></div>
+            <!--进行目录查询的时候需要让他消失-->
+            <div class="text-center pagination-display-control">
+                <ul class="pagination jq-pagination" id="the-pagination"> </ul>
+            </div>
+        </div>
+
+
+        <div class="col-xs-7 col-xs-offset-1 aside">
+            <div class="title">个人介绍</div>
+            <div class="main-top">
+                <a class="avatar" th:href="@{/p/{id}(id=${user.id})}">
+                    <img th:src="${user.avatarurl}"
+                         alt="240">
+                </a>
+
+                <div class="title">
+                    <a class="name" th:href="@{/p/{id}(id=${user.id})}" th:text="${user.username}"></a>
+                </div>
+            </div>
+
+            <ul class="list user-dynamic">
+                <li>
+                    <a th:href="'mailto:'+ ${user.email}">
+                        <i class="fa fa-envelope"></i> <span th:text="${user.email}"></span>
+                    </a>
+                </li>
+            </ul>
+            <!-- 专题和文集 -->
+            <div id="classifications-container">
+                <!---->
+                <div id="classificationsReplace">
+                    <div class="title">
+                        我的文集
+                    </div>
+                    <a class="function-btn" href="javascript:void(0)"><i
+                            class="fa fa-edit"></i>编辑</a>
+                    <ul class="list">
+                        <li th:each="classification : ${classifications}" th:object="${classification}">
+                            <a>
+                                <i class="fa fa-book"></i>
+                            </a>
+                            <a class="the-classification-name" th:text="*{name}" th:attr="classificationId=*{id}">
+                                随笔
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div id="form-container">
+                        <div id="classificationFormReplace">
+                            <div class="catalog-edit js-intro-form" th:object="${newClassification}">
+                                <textarea id="edited-classification-content"></textarea>
+                                <button class="btn btn-hollow save-edit-classification">保存</button>
+                                <a class="cancel-edit-intro" href="javascript:void(null);">取消</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}">...</div>
+
+<!-- JavaScript -->
+<script th:inline="javascript">
+    var username = [[${user.username}]];
+    var userId = [[${user.id}]];
+    var querymethod;
+    var pageIndex;
+    var pageSize = 5;
+</script>
+<script src="../../js/jqPaginator.js" th:src="@{/js/jqPaginator.js}"></script>
+<script src="../../js/personal/person.js" th:src="@{/js/personal/person.js}"></script>
+
+</body>
+</html>
